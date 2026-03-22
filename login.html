@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avi Unmasked Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav> 
+    <div class="nav-left profile">
+    <img src="Avi Unmasked.jpeg" alt="profile">
+    <div>
+      <div class="username">@avi-unmasked</div>
+      <div style="font-size:12px;opacity:.8">Arvind Godara</div>
+    </div>
+  </div>
+    <div class="nav-right">
+    <div class="nav-links" style="display:flex;align-items:center">
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+     <div class="clock" id="clock">--:--:--</div>
+    <button class="mode-btn" aria-label="Toggle theme" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+  </div>
+  </nav>
+<div class="form-container">
+    <h2>Login</h2>
+    <form>
+        <input type="text" placeholder="Enter Name" required>
+        <input type="email" placeholder="Enter Email" required>
+        <input type="password" placeholder="Enter Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have account? <a href="register.html">Register</a></p>
+</div>
+<script>
+ (function startClock(){
+  const el = document.getElementById('clock');
+  function pad(n){ return n < 10 ? '0'+n : n }
+  function tick(){
+    const d = new Date();
+    const time = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    const date = d.toLocaleDateString(undefined, {weekday:'short', day:'numeric', month:'short'});
+    el.textContent = time + ' • ' + date;
+  }
+  tick(); setInterval(tick,1000);
+})();
+(function themeInit(){
+  const body = document.body;
+  const saved = localStorage.getItem('site-theme');
+  if(saved === 'dark') body.classList.add('dark');
+  window.toggleTheme = () => {
+    body.classList.toggle('dark');
+    localStorage.setItem('site-theme', body.classList.contains('dark') ? 'dark' : 'light');
+    document.querySelector('.mode-btn').textContent = body.classList.contains('dark') ? '☀️' : '🌙';
+  };
+  document.querySelector('.mode-btn').textContent = body.classList.contains('dark') ? '☀️' : '🌙';
+})();
+</script>
+<script type="module">
+import { auth, signInWithEmailAndPassword } from "./firebase.js";
+
+document.querySelector("form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = e.target[1].value;
+    const password = e.target[2].value;
+
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+        window.location.href = "portfolio.html";
+    } catch {
+        alert("Invalid login");
+    }
+});
+</script>
+</script>
+</body>
+</html>

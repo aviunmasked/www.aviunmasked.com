@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avi Unmasked</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<nav> 
+    <div class="nav-left profile">
+    <img src="Avi Unmasked.jpeg" alt="profile">
+    <div>
+      <span id="userEmail">Loading...</span>
+      <div style="font-size:12px;opacity:.8">Arvind Godara</div>
+    </div>
+  </div>
+    <div class="nav-right">
+    <div class="nav-links" style="display:flex;align-items:center">
+      <a href="#Home">Home</a>
+      <a href="#Brand">Brand Collaboration</a>
+      <a href="#Social-Media">Social Media</a>
+      <a href="#Contact">Contact</a>
+    </div>
+     <div class="clock" id="clock">--:--:--</div>
+    <button class="mode-btn" aria-label="Toggle theme" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+  </div>
+  </nav>
+<main> 
+<section id="Home" class="hero">
+    <div class="right">
+         <h1> Let’s not just get information… let’s uncover the real truth — with<span id="type"> Avi Unmasked. </span></h1>
+        <p style="margin-top:12px;max-width:520px;line-height:1.5">
+            Welcome to your personal brand hub. Grow your audience, collaborate with brands,
+      and showcase your content like a pro.
+        </p>
+        <a href="#Contact">
+            <button class="start-btn">Collaborate Now &#8594; </button>
+        </a>
+    </div>
+
+    <div class="left">
+        <img src="Avi Unmasked.jpeg" alt="image">
+    </div>
+</section>
+
+<!-- BRAND -->
+<section id="Brand" class="">
+  <h2>Brand Collaboration</h2>
+  <div class="glass box">
+    <p>
+      I help brands reach the right audience through engaging and high-quality content.
+      My audience trusts my recommendations, which leads to better conversions and growth.
+    </p>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section id="#Social-Media" class="social-section">
+  <h3 style="text-align:center;margin-bottom:12px;">Social Media</h3>
+
+   <div style="width:100%;display:flex;justify-content:center;gap:12px;align-items:center;margin-bottom:8px">
+      <div class="controls" style="display:flex;gap:8px">
+        <button class="btn-circle" id="prev"><i class="fa fa-chevron-left"></i></button>
+        <button class="btn-circle" id="next"><i class="fa fa-chevron-right"></i></button>
+      </div>
+      <div style="font-size:.95rem;opacity:.9">Swipe / Click to browse</div>
+    </div>
+
+    <div class="carousel" aria-label="social carousel">
+  <div class="track" id="track">
+
+    <div class="card instagram" onclick="openLink('https://www.instagram.com/aviunmasked?igsh=Mnk3ZjlwNmF6cWJ5')">
+      <i class="fab fa-instagram"></i>
+      <h3>Instagram</h3>
+      <p>Reels • Growth • Audience</p>
+    </div>
+
+    <div class="card facebook" onclick="openLink('')">
+      <i class="fab fa-facebook"></i>
+      <h3>Facebook</h3>
+      <p>Ads • Community • Reach</p>
+    </div>
+
+    <div class="card youtube" onclick="openLink('https://youtube.com/@aviunmasked00?si=BOZlWHBhtwQBDvXX')">
+      <i class="fab fa-youtube"></i>
+      <h3>YouTube</h3>
+      <p>Videos • Shorts • Monetization</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="Contact">
+    <h3 style="text-align:center;margin-bottom:12px">Contact</h3>
+
+    <div class="contact" style="max-width:1000px;margin:0 auto">
+      <div style="padding:18px;border-radius:12px;background:var(--card-bg);box-shadow:0 10px 30px rgba(12,18,40,0.06)">
+        <h4>Other ways to reach</h4>
+        <p style="margin:.25rem 0"><i class="fa fa-envelope"></i> aviunmasked@gmail.com</p>
+        <p style="margin:.25rem 0"><i class="fa fa-phone"></i> +91 7690918356</p>
+        <p style="margin:.25rem 0">Follow on social channels</p>
+        <div style="display:flex;gap:10px;margin-top:8px">
+          <a href="https://www.instagram.com/aviunmasked?igsh=Mnk3ZjlwNmF6cWJ5" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com/@aviunmasked00?si=BOZlWHBhtwQBDvXX" aria-label="youtube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="facebook"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>&copy; <span id="year"></span> Arvind Godara — 💕❣</footer>
+<script>
+ (function startClock(){
+  const el = document.getElementById('clock');
+  function pad(n){ return n < 10 ? '0'+n : n }
+  function tick(){
+    const d = new Date();
+    const time = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    const date = d.toLocaleDateString(undefined, {weekday:'short', day:'numeric', month:'short'});
+    el.textContent = time + ' • ' + date;
+  }
+  tick(); setInterval(tick,1000);
+})();
+(function themeInit(){
+  const body = document.body;
+  const saved = localStorage.getItem('site-theme');
+  if(saved === 'dark') body.classList.add('dark');
+  window.toggleTheme = () => {
+    body.classList.toggle('dark');
+    localStorage.setItem('site-theme', body.classList.contains('dark') ? 'dark' : 'light');
+    document.querySelector('.mode-btn').textContent = body.classList.contains('dark') ? '☀️' : '🌙';
+  };
+  document.querySelector('.mode-btn').textContent = body.classList.contains('dark') ? '☀️' : '🌙';
+})();
+(function carousel(){
+  const track = document.getElementById('track');
+  const cards = Array.from(track.querySelectorAll('.card'));
+  let idx = 0;
+  const update = () => {
+    const containerWidth = track.parentElement.offsetWidth;
+    const card = cards[idx];
+    const cardCenter = card.offsetLeft + card.offsetWidth/2;
+    const offset = cardCenter - containerWidth/2;
+    track.style.transform = `translateX(${-offset}px)`;
+    cards.forEach((c,i)=> {
+      c.classList.remove('active','inactive');
+      if(i===idx) c.classList.add('active'); else c.classList.add('inactive');
+    });
+  };
+  let timer = setInterval(()=>{ idx=(idx+1)%cards.length; update(); }, 3000);
+  track.parentElement.addEventListener('mouseenter', ()=> clearInterval(timer));
+  track.parentElement.addEventListener('mouseleave', ()=> timer = setInterval(()=>{ idx=(idx+1)%cards.length; update(); }, 3000));
+
+  document.getElementById('prev').addEventListener('click', ()=>{ idx = (idx-1+cards.length)%cards.length; update(); });
+  document.getElementById('next').addEventListener('click', ()=>{ idx = (idx+1)%cards.length; update(); });
+  cards.forEach((c,i)=> c.addEventListener('click', ()=> { idx=i; update(); }));
+  let startX=null, scrollLeft=null;
+  track.addEventListener('pointerdown', (e)=>{
+    startX = e.clientX; scrollLeft = track.scrollLeft; track.setPointerCapture(e.pointerId);
+  });
+  track.addEventListener('pointerup',()=>{ startX=null; track.releasePointerCapture(); });
+  track.addEventListener('pointermove', (e)=>{
+    if(startX===null) return;
+    const dx = startX - e.clientX;
+    track.scrollLeft = scrollLeft + dx;
+  });
+  setTimeout(update,100);
+  window.addEventListener('resize', ()=> setTimeout(update,120));
+})();
+ 
+
+// scroll animation
+const sections = document.querySelectorAll(".section");
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add("show");
+    }
+  });
+});
+</script>
+<script type="module">
+import { auth, onAuthStateChanged } from "./firebase.js";
+
+onAuthStateChanged(auth, (user) => {
+  if(user){
+    document.getElementById("userEmail").innerText = user.email;
+  } else {
+    window.location.href = "login.html";
+  }
+});
+</script>
+
+</body>
+</html>
