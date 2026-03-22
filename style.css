@@ -281,3 +281,70 @@ section{
     .track{scroll-snap-type:x mandatory;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:14px}
     .card{scroll-snap-align:center;flex:0 0 86%}
   }
+@media (max-width: 480px){
+
+  .nav-links a{
+    font-size:12px;
+  }
+
+  .hero h1{
+    font-size:20px;
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+
+  .clock{
+    font-size:10px;
+  }
+
+  .card{
+    min-width:140px;
+  }
+
+}
+ @media (max-width: 768px){
+
+  /* NAV */
+  nav{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav-right{
+    width:100%;
+    justify-content:space-between;
+  }
+
+  .nav-links{
+    width:100%;
+    justify-content:space-around;
+  }
+
+  /* HERO STACK */
+  .hero{
+    flex-direction:column-reverse;
+    text-align:center;
+  }
+
+  .hero .right{
+    max-width:100%;
+  }
+
+  .hero .left img{
+    max-width:250px;
+  }
+
+  /* BUTTON FULL WIDTH */
+  .start-btn{
+    width:100%;
+  }
+
+  /* SOCIAL CARDS */
+  .card{
+    min-width:160px;
+    padding:15px;
+  }
+
+}
