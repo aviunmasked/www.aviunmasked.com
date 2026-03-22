@@ -304,6 +304,23 @@ section{
   }
 
 }
+.form-container{
+    padding:18px;
+  }
+
+  .form-container h2{
+    font-size:20px;
+  }
+
+  .form-container input{
+    padding:10px;
+  }
+
+  .form-container button{
+    padding:10px;
+  }
+
+}
  @media (max-width: 768px){
 
   /* NAV */
@@ -348,3 +365,10 @@ section{
   }
 
 }
+.form-container{
+    margin:40px 15px;
+    padding:20px;
+  }
+
+}
+
