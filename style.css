@@ -281,7 +281,3 @@ section{
     .track{scroll-snap-type:x mandatory;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:14px}
     .card{scroll-snap-align:center;flex:0 0 86%}
   }
-  
-}
- 
-
